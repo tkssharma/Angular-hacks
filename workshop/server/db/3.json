@@ -3,7 +3,7 @@
   "name": "Wassim Chegham",
   "country": "France",
   "talk": "Angular 2 Server Side Rendering",
-  "photo": "//angularcamp.org/img/people/WassimChegham.jpg",
+  "photo": "https://avatars3.githubusercontent.com/u/10391135?v=3&s=460",
   "complexity": "Intermediate",
   "description": "Angular 2 is the new upcoming version of AngularJS. Angular 2 offers many new cool features, including Server-Side-Rendering (SSR). With SSR you will be able to render any Angular 2 application on the server for faster page loading, better SEO and great User Experience. In this talk we will discover how server-side rendering work under the hood. Get ready for the future, get Universal."
 }

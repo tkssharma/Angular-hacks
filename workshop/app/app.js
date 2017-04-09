@@ -1,4 +1,8 @@
-
+/**
+ * app.js
+ *
+ * Root modulethat imports all modules of the app.
+ */
 
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
@@ -13,16 +17,7 @@ const root = angular
     common,
     components
   ])
-  .component('acApp', function(){
-    return {
-      template: `
-        <ac-header></ac-header>
-        <div ui-view></div>
-        <ac-footer></ac-footer>
-      `
-    }
-
-  })
+  .component('acApp', AppComponent)
 
 // Bootstrap the app.
 document.addEventListener('DOMContentLoaded', () => angular.bootstrap(document, ['angularCamp']))

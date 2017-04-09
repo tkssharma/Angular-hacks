@@ -1,7 +1,7 @@
 {
-  "name": "workshop",
+  "name": "angularcamp-workshop",
   "version": "1.0.0",
-  "description": " Worskhop",
+  "description": "AngularCamp Worskhop",
   "main": "index.js",
   "scripts": {
     "create": "touch ./server/public/app.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tkssharma/workshop.git"
+    "url": "git+https://github.com/carlosazaustre/angularcamp-workshop.git"
   },
   "keywords": [
     "angular",
@@ -21,6 +21,12 @@
     "es6",
     "es2015"
   ],
+  "author": "Carlos Azaustre <cazaustre@gmail.com> (https://carlosazaustre.es)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosazaustre/angularcamp-workshop/issues"
+  },
+  "homepage": "https://github.com/carlosazaustre/angularcamp-workshop#readme",
   "dependencies": {
     "angular": "^1.5.7",
     "angular-ui-router": "^1.0.0-alpha.5",
