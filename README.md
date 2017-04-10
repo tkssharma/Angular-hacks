@@ -12,7 +12,7 @@ Other frameworks deal with HTML’s shortcomings by either abstracting away HTML
 
 AngularJS is a toolset for building the framework most suited to your application development. It is fully extensible and works well with other libraries. Every feature can be modified or replaced to suit your unique development workflow and feature needs. Read on to find out how.
 
-# Angular js hacks 01 $scope.$apply
+### Angular js hacks 01 $scope.$apply
 
 ```bash
 angular.module('myApp',[]).controller('MessageController', function($scope) {
@@ -29,7 +29,7 @@ angular.module('myApp',[]).controller('MessageController', function($scope) {
 ```
 
 
-# Angular js hacks 01 $scope.$watch
+### Angular js hacks 02 $scope.$watch
 
 ```bash
 $scope.$watch("message", function(newval, oldval) {
@@ -39,6 +39,6 @@ $scope.$watch("message", function(newval, oldval) {
 $scope.$watchCollection("colors", function(newList, oldList) {
     console.log("new list: " + newList);
     console.log("old list: " + oldList);
-});
+  });
 });
 ```

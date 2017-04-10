@@ -1,25 +1,34 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /**
  * app.component.js
  *
  * Root component that defines the base element for the entire application
  */
 
-var AppComponent = exports.AppComponent = {
-  template: "\n    <ac-header></ac-header>\n    <div ui-view></div>\n    <ac-footer></ac-footer>\n  "
-};
-
-},{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var AppComponent = {
+  template: "\n    <ac-header></ac-header>\n    <div ui-view></div>\n    <ac-footer></ac-footer>\n  "
+};
+exports.AppComponent = AppComponent;
+
+},{}],2:[function(require,module,exports){
+/**
+ * app.js
+ *
+ * Root modulethat imports all modules of the app.
+ */
+
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
 
@@ -29,96 +38,102 @@ var _angularUiRouter = require('angular-ui-router');
 
 var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-var _common = require('./common/common');
+var _commonCommon = require('./common/common');
 
-var _common2 = _interopRequireDefault(_common);
+var _commonCommon2 = _interopRequireDefault(_commonCommon);
 
-var _components = require('./components/components');
+var _componentsComponents = require('./components/components');
 
-var _components2 = _interopRequireDefault(_components);
+var _componentsComponents2 = _interopRequireDefault(_componentsComponents);
 
-var _app = require('./app.component');
+var _appComponent = require('./app.component');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var root = _angular2.default.module('angularCamp', [_angularUiRouter2.default, _common2.default, _components2.default]).component('acApp', _app.AppComponent);
+var root = _angular2['default'].module('angularCamp', [_angularUiRouter2['default'], _commonCommon2['default'], _componentsComponents2['default']]).component('acApp', _appComponent.AppComponent);
 
 // Bootstrap the app.
-/**
- * app.js
- *
- * Root modulethat imports all modules of the app.
- */
-
 document.addEventListener('DOMContentLoaded', function () {
-  return _angular2.default.bootstrap(document, ['angularCamp']);
+  return _angular2['default'].bootstrap(document, ['angularCamp']);
 });
 
-exports.default = root;
+exports['default'] = root;
+module.exports = exports['default'];
 
 },{"./app.component":1,"./common/common":3,"./components/components":6,"angular":29,"angular-ui-router":17}],3:[function(require,module,exports){
+/**
+ * common/common.js
+ *
+ * Module that contains the common components for the application.
+ */
+
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _header = require('./header/header.component');
+var _headerHeaderComponent = require('./header/header.component');
 
-var _footer = require('./footer/footer.component');
+var _footerFooterComponent = require('./footer/footer.component');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var common = _angular2['default'].module('app.common', []).component('acHeader', _headerHeaderComponent.HeaderComponent).component('acFooter', _footerFooterComponent.FooterComponent).name;
 
-var common = _angular2.default.module('app.common', []).component('acHeader', _header.HeaderComponent).component('acFooter', _footer.FooterComponent).name; /**
-                                                                                                                                                             * common/common.js
-                                                                                                                                                             *
-                                                                                                                                                             * Module that contains the common components for the application.
-                                                                                                                                                             */
-
-exports.default = common;
+exports['default'] = common;
+module.exports = exports['default'];
 
 },{"./footer/footer.component":4,"./header/header.component":5,"angular":29}],4:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /**
  * common/footer/footer.component.js
  *
  * A common component for the footer of application
  */
 
-var FooterComponent = exports.FooterComponent = {
-  template: "\n    <footer class=\"page-footer blue-grey darken-2\">\n      <div class=\"footer-copyright blue-grey darken-1\">\n        <div class=\"container\">\n          \xA9 2016 Carlos Azaustre.\n        </div>\n      </div>\n    </footer>\n  "
-};
-
-},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var FooterComponent = {
+  template: "\n    <footer class=\"page-footer blue-grey darken-2\">\n      <div class=\"footer-copyright blue-grey darken-1\">\n        <div class=\"container\">\n          © 2016 Carlos Azaustre.\n        </div>\n      </div>\n    </footer>\n  "
+};
+exports.FooterComponent = FooterComponent;
+
+},{}],5:[function(require,module,exports){
 /**
  * common/header/header.component.js
  *
  * A common component for the header of the application
  */
 
-var HeaderComponent = exports.HeaderComponent = {
-  template: "\n    <nav>\n      <div class=\"nav-wrapper red darken-4\">\n        <a href=\"#\" class=\"brand-logo center\">AngularCamp 2016</a>\n      </div>\n    </nav>\n  "
-};
-
-},{}],6:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var HeaderComponent = {
+  template: "\n    <nav>\n      <div class=\"nav-wrapper red darken-4\">\n        <a href=\"#\" class=\"brand-logo center\">AngularCamp 2016</a>\n      </div>\n    </nav>\n  "
+};
+exports.HeaderComponent = HeaderComponent;
+
+},{}],6:[function(require,module,exports){
+/**
+ * components/components.js
+ *
+ * Module that contains the specific components for the application.
+ */
+
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
 
@@ -128,42 +143,44 @@ var _speaker = require('./speaker');
 
 var _speaker2 = _interopRequireDefault(_speaker);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var components = _angular2['default'].module('app.components', [_speaker2['default']]).name;
 
-/**
- * components/components.js
- *
- * Module that contains the specific components for the application.
- */
-
-var components = _angular2.default.module('app.components', [_speaker2.default]).name;
-
-exports.default = components;
+exports['default'] = components;
+module.exports = exports['default'];
 
 },{"./speaker":7,"angular":29}],7:[function(require,module,exports){
+/**
+ * components/speaker/index.js
+ *
+ * Module that contains the speakers components and service and configure the routed component for
+ * /speakers path route.
+ */
+
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _speakerItem = require('./speaker-item/speaker-item.component');
+var _speakerItemSpeakerItemComponent = require('./speaker-item/speaker-item.component');
 
-var _speakerList = require('./speaker-list/speaker-list.component');
+var _speakerListSpeakerListComponent = require('./speaker-list/speaker-list.component');
 
-var _speakerDetail = require('./speaker-detail/speaker-detail.component');
+var _speakerDetailSpeakerDetailComponent = require('./speaker-detail/speaker-detail.component');
 
-var _speaker = require('./speaker.service');
+var _speakerService = require('./speaker.service');
 
-var _speaker2 = _interopRequireDefault(_speaker);
+var _speakerService2 = _interopRequireDefault(_speakerService);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var speaker = _angular2['default'].module('speakers', []).service('SpeakerService', _speakerService2['default']).component('speakerItem', _speakerItemSpeakerItemComponent.SpeakerItemComponent).component('speakerList', _speakerListSpeakerListComponent.SpeakerListComponent).component('speakerDetail', _speakerDetailSpeakerDetailComponent.SpeakerDetailComponent).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
 
-var speaker = _angular2.default.module('speakers', []).service('SpeakerService', _speaker2.default).component('speakerItem', _speakerItem.SpeakerItemComponent).component('speakerList', _speakerList.SpeakerListComponent).component('speakerDetail', _speakerDetail.SpeakerDetailComponent).config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider.state('speakers', {
     url: '/',
     component: 'speakerList',
@@ -182,81 +199,80 @@ var speaker = _angular2.default.module('speakers', []).service('SpeakerService',
     }
   });
   $urlRouterProvider.otherwise('/');
-}).name; /**
-          * components/speaker/index.js
-          *
-          * Module that contains the speakers components and service and configure the routed component for
-          * /speakers path route.
-          */
+}).name;
 
-exports.default = speaker;
+exports['default'] = speaker;
+module.exports = exports['default'];
 
 },{"./speaker-detail/speaker-detail.component":8,"./speaker-item/speaker-item.component":9,"./speaker-list/speaker-list.component":11,"./speaker.service":13,"angular":29}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /**
  * components/speaker/speaker-detail/speaker-detail.js
  *
  * Stateful component that represents a detail view for a Speaker.
  */
 
-var SpeakerDetailComponent = exports.SpeakerDetailComponent = {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SpeakerDetailComponent = {
   bindings: {
     speaker: '<'
   },
   template: '\n    <article class="card">\n      <figure class="card-image">\n        <img width="250px" src="{{$ctrl.speaker.photo}}" alt="{{$ctrl.speaker.name}}" />\n        <span ng-click="$ctrl.onClick();" class="card-title">{{$ctrl.speaker.name}}</span>\n      </figure>\n      <section class="card-content">\n        <h5>{{$ctrl.speaker.talk}}</h5>\n        <p>{{$ctrl.speaker.description}}</p>\n      </section>\n      <aside class="card-action">\n        <a href="#">{{$ctrl.speaker.complexity}}</a>\n      </aside>\n    </article>\n  '
 };
+exports.SpeakerDetailComponent = SpeakerDetailComponent;
 
 },{}],9:[function(require,module,exports){
+/**
+ * components/speaker/speaker-item/speaker-item.component.js
+ *
+ * Stateful Component that defines a item in a speakers list.
+ * Stateful: - Fetches state, essentially communicating to a backend API through a service
+ *           - In this example, the data is fetched in resolve routes and injected in 'data' property binding.
+ */
+
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
-exports.SpeakerItemComponent = undefined;
 
-var _speakerItem = require('./speaker-item.controller');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _speakerItem2 = _interopRequireDefault(_speakerItem);
+var _speakerItemController = require('./speaker-item.controller');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _speakerItemController2 = _interopRequireDefault(_speakerItemController);
 
-var SpeakerItemComponent = exports.SpeakerItemComponent = {
+var SpeakerItemComponent = {
   bindings: {
     data: '<',
     onSayHello: '&'
   },
-  controller: _speakerItem2.default,
-  template: '\n    <li class="collection-item avatar" style="border-bottom: 1px solid #cccccc;">\n      <img class="circle" width="96px" ng-src="{{$ctrl.data.photo}}" alt="{{$ctrl.data.name}}" />\n      <span class="title">{{$ctrl.data.name}}</span>\n      <p><a ng-href="#/speakers/{{$ctrl.data.id}}">{{$ctrl.data.talk}}</a></p>\n      <div class="secondary-content" style="cursor: pointer;" ng-click="$ctrl.onClick();">\n        <i class="material-icons">thumb_up</i>\n      </div>\n    </li>\n  '
-}; /**
-    * components/speaker/speaker-item/speaker-item.component.js
-    *
-    * Stateful Component that defines a item in a speakers list.
-    * Stateful: - Fetches state, essentially communicating to a backend API through a service
-    *           - In this example, the data is fetched in resolve routes and injected in 'data' property binding.
-    */
+  controller: _speakerItemController2['default'],
+  template: '\n    <li class="collection-item avatar" style="border-bottom: 1px solid #cccccc;">\n      <img class="circle" width="96px" ng-src="{{$ctrl.data.photo}}" alt="{{$ctrl.data.name}}" />\n      <span class="title">{{$ctrl.data.name}}</span>\n      <p><a href="#!/speaker/{{$ctrl.data.id}}">{{$ctrl.data.talk}}</a></p>\n      <div class="secondary-content" style="cursor: pointer;" ng-click="$ctrl.onClick();">\n        <i class="material-icons">thumb_up</i>\n      </div>\n    </li>\n  '
+};
+exports.SpeakerItemComponent = SpeakerItemComponent;
 
 },{"./speaker-item.controller":10}],10:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * components/speaker/speaker-item/speaker-item.controller.js
  *
  * Controller for <speaker-item> component
  */
 
-var SpeakerItemController = function () {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SpeakerItemController = (function () {
   function SpeakerItemController() {
     _classCallCheck(this, SpeakerItemController);
   }
@@ -273,56 +289,59 @@ var SpeakerItemController = function () {
   }]);
 
   return SpeakerItemController;
-}();
+})();
 
-exports.default = SpeakerItemController;
+exports["default"] = SpeakerItemController;
+module.exports = exports["default"];
 
 },{}],11:[function(require,module,exports){
+/**
+ * components/speaker/speaker-list/speaker-list.component.js
+ *
+ * Stateless Component that defines a speakers list.
+ * Stateless: - Data enters the component through attribute bindings (inputs)
+ *            - Data leaves the component through events (outputs)
+ */
+
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
-exports.SpeakerListComponent = undefined;
 
-var _speakerList = require('./speaker-list.controller');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _speakerList2 = _interopRequireDefault(_speakerList);
+var _speakerListController = require('./speaker-list.controller');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _speakerListController2 = _interopRequireDefault(_speakerListController);
 
-var SpeakerListComponent = exports.SpeakerListComponent = {
+var SpeakerListComponent = {
   bindings: {
     speakers: '<'
   },
-  controller: _speakerList2.default,
+  controller: _speakerListController2['default'],
   template: '\n    <ul class="collection">\n      <speaker-item ng-repeat="speaker in $ctrl.speakers"\n                    data="speaker"\n                    on-say-hello="$ctrl.sayHello($event);">\n      </speaker-item>\n    </ul>\n  '
-}; /**
-    * components/speaker/speaker-list/speaker-list.component.js
-    *
-    * Stateless Component that defines a speakers list.
-    * Stateless: - Data enters the component through attribute bindings (inputs)
-    *            - Data leaves the component through events (outputs)
-    */
+};
+exports.SpeakerListComponent = SpeakerListComponent;
 
 },{"./speaker-list.controller":12}],12:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * components/speaker/spekaer-list/speaker-list.controller.js
  *
  * Controller for <speaker-list> component
  */
 
-var SpeakerListController = function () {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var SpeakerListController = (function () {
   function SpeakerListController() {
     _classCallCheck(this, SpeakerListController);
 
@@ -339,28 +358,29 @@ var SpeakerListController = function () {
   }]);
 
   return SpeakerListController;
-}();
+})();
 
-exports.default = SpeakerListController;
+exports['default'] = SpeakerListController;
+module.exports = exports['default'];
 
 },{}],13:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * components/speaker/speaker.service.js
  *
  * Service to fetch data from Speakers API
  */
 
-var SpeakerService = function () {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var SpeakerService = (function () {
   function SpeakerService($http) {
     _classCallCheck(this, SpeakerService);
 
@@ -384,9 +404,10 @@ var SpeakerService = function () {
   }]);
 
   return SpeakerService;
-}();
+})();
 
-exports.default = SpeakerService;
+exports['default'] = SpeakerService;
+module.exports = exports['default'];
 
 },{}],14:[function(require,module,exports){
 "use strict";
