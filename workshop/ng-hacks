@@ -1,0 +1,28 @@
+.directive('typecode', function (){
+   return {
+      require: 'ngModel',
+      link: function(scope, elem, attr, ngModel) {
+
+				// add a parser that will process each time the value is
+				// parsed into the model when the user updates it.
+				ngModel.$parsers.unshift(function(value) {
+					 var valid;
+					if(value){
+
+						var val = value.split(' ');
+						if(val.length === 2 ){
+							// test and set the validity after update.
+							var validTypeCode = val[0].length > 0 && val[0].length <=10
+							var validSubTypeCode = val[1].length > 0 && val[1].length <=3
+							valid = validTypeCode && validSubTypeCode
+							ngModel.$setValidity('moveType', valid);
+						}
+					}
+					// if it's valid, return the value to the model,
+					// otherwise return undefined.
+					return valid ? value : undefined;
+				});
+
+      }
+   };
+});
