@@ -1,0 +1,31 @@
+<div ng-controller="todoController">
+    <span>{{description}}</span>
+    <form>
+        <label for="newTodo">Task:</label>
+        <input type="text" id="newTodo" placeholder="New Task" ng-model="newTodo.title" />
+        <button ng-click="addTodo()" value="Add">Add</button>
+    </form>
+    <ul>
+        <li ng-repeat="todo in todos">
+            <input type="checkbox" ng-model="todo.complete" /> {{todo.title}}
+        </li>
+    </ul>
+</div>
+
+<ul>
+    <li ng-repeat="todo in todos"> <input type="checkbox" ng-model="todo.complete" /> {{todo.title}} ({{$index + 1}} of {{$parent.todos.length}}) </li>
+</ul>
+<!-- using 2ns option -->
+
+<div ng-controller="todoAsController as todoC"> <span>{{todoC.message}}</span> <span>{{todoC.description}}</span>
+    <form>
+        <label for="newTodo2">Task:</label>
+        <input type="text" id="newTodo2" placeholder="New Task" ng-model="todoC.newTodo.title" />
+        <button ng-click="todoC.addTodo()" value="Add">Add</button>
+    </form>
+    <ul>
+        <li ng-repeat="todo in todoC.todos">
+            <input type="checkbox" ng-model="todo.complete" /> {{todo.title}} ({{$index + 1}} of {{todoC.todos.length}})
+        </li>
+    </ul>
+</div>
